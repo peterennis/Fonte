@@ -34,7 +34,8 @@ namespace Fonte.App.Delegates
         {
             base.OnDisabled(canvas, args);
 
-            if (args.ActivationKind == ActivationKind.Switch && TryRemoveTrailingOffCurve(canvas.Layer))
+            if (args.ActivationKind != ActivationKind.TemporarySwitch &&
+                TryRemoveTrailingOffCurve(canvas.Layer))
             {
                 ((App)Application.Current).InvalidateData();
             }
@@ -149,8 +150,8 @@ namespace Fonte.App.Delegates
                     else
                     {
                         TryRemoveTrailingOffCurve(layer);
-
                         layer.ClearSelection();
+
                         Outline.BreakPath(tappedPath, tappedPath.Points.IndexOf(tappedPoint));
                     }
                     
