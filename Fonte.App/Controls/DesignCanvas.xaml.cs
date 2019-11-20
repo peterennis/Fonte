@@ -97,6 +97,7 @@ namespace Fonte.App.Controls
                         _tool = value;
                     }
 
+                    Invalidate();
                     InvalidateCursor();
                 }
             }
@@ -396,6 +397,9 @@ namespace Fonte.App.Controls
             {
                 prevTool.OnDisabled(this, TemporaryActivationEventArgs);
                 tool.OnActivated(this, TemporaryActivationEventArgs);
+
+                Invalidate();
+                InvalidateCursor();
             }
         }
 
